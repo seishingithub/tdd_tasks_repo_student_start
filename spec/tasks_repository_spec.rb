@@ -36,4 +36,12 @@ describe TasksRepository do
     expect(@repo.find(1)).to eq expected_task
   end
 
+  it 'allows updating a task' do
+    @repo.create({:name => "Do some stuff"})
+    @repo.update(1, {:name => "Do more stuff"})
+    expected_task =
+        {:id => 1, :name => "Do more stuff"}
+    expect(@repo.find(1)).to eq expected_task
+  end
+
 end
