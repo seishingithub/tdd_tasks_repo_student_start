@@ -44,4 +44,13 @@ describe TasksRepository do
     expect(@repo.find(1)).to eq expected_task
   end
 
+  it 'allow deleting of a task' do
+    @repo.create({:name => "Do some stuff"})
+    @repo.create({:name => "Do some more stuff"})
+    @repo.delete(1)
+    expected_task =
+        [{:id => 2, :name => "Do some more stuff"}]
+    expect(@repo.all).to eq expected_task
+  end
+
 end
